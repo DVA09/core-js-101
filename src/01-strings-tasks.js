@@ -52,7 +52,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-  return `Hello, ${firstName} ${lastName}`;
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -99,7 +99,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
   return value.trim();
 }
 
-/**git 
+/** git
  * Returns a string that repeated the specified number of times.
  *
  * @param {string} value
@@ -227,7 +227,7 @@ function encodeToRot13(str) {
   return str.replace(/[a-zA-Z]/g, (letter) => {
     const offset = letter.charCodeAt(0) < 97 ? 65 : 97;
     return String.fromCharCode(((letter.charCodeAt(0) - offset + 13) % 26) + offset);
-  });;
+  });
 }
 
 /**
@@ -244,7 +244,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return typeof value === 'string' || value instanceof String;;
+  return typeof value === 'string' || value instanceof String;
 }
 
 
