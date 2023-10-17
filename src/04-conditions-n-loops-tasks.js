@@ -276,7 +276,7 @@ function isCreditCardNumber(ccn) {
 
   const sum = digits.reduce((acc, digit) => acc + digit, 0);
 
-  return sum % 10 === 0
+  return sum % 10 === 0;
 }
 
 /**
@@ -324,21 +324,29 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-  if (str.length % 2 === 1) {
-    return false;
-  }
-  const count = Math.round(str.length / 2);
-  const brackets = ['[]', '{}', '()', '<>'];
-  let newStr = str;
+  const stack = [];
+  const openingBrackets = '([{<';
+  const closingBrackets = ')]}>';
+  const bracketPairs = {
+    ')': '(',
+    ']': '[',
+    '}': '{',
+    '>': '<',
+  };
 
-  for (let i = 0; i <= count; i += 1) {
-    if (newStr.length > 1 && newStr.length !== 0) {
-      for (const bracket of brackets) {
-        newStr = newStr.replaceAll(bracket, '');
+  const unbalanced = str.split('').some((bracket) => {
+    if (openingBrackets.includes(bracket)) {
+      stack.push(bracket);
+    } else if (closingBrackets.includes(bracket)) {
+      const lastOpeningBracket = stack.pop();
+      if (lastOpeningBracket !== bracketPairs[bracket]) {
+        return true;
       }
     }
-  }
-  return (newStr.length === 0);
+    return false;
+  });
+
+  return !unbalanced && stack.length === 0;
 }
 
 

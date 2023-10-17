@@ -21,7 +21,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-  return arr.indexOf(value) !== -1 ? index : -1;
+  return arr.findIndex((x) => x === value);
 }
 
 /**
@@ -238,7 +238,7 @@ function getMovingSum(arr) {
   return arr.map((value) => {
     sum += value;
     return sum;
-  })
+  });
 }
 
 /**
@@ -325,9 +325,8 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  const digitNamesOrder = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
   return arr.sort((a, b) => digits.indexOf(a) - digits.indexOf(b));
-
 }
 
 /**
